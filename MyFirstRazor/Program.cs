@@ -1,7 +1,13 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using Services;
+
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+
+builder.Services.AddSingleton<ICoolLists, csCoolList>();
 
 var app = builder.Build();
 
@@ -21,6 +27,8 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.MapGet("/ad!ku76fR", () => { return "Hello from Martin"; });
 
 app.Run();
 
